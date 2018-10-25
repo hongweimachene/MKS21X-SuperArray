@@ -34,24 +34,24 @@ public class SuperArray {
     String s = "[";
     for (int i = 0; i < size; i++) {
       if (i == size - 1) {
-        s += data[i] + "]";
+        s += data[i];
       } else {
         s += data[i] + ",";
       }
     }
-    return s;
+    return s + "]";
   }
 
   public String toStringDebug() {
     String s = "[";
     for (int i = 0; i < data.length; i++) {
-      if (i == size - 1) {
-        s += data[i] + "]";
+      if (i == data.length - 1) {
+        s += data[i];
       } else {
         s += data[i] + ",";
       }
     }
-    return s;
+    return s + "]";
   }
 
   public String get(int index) {
@@ -63,7 +63,7 @@ public class SuperArray {
 
   public String set(int index, String s) {
     if (index < 0 || index >= size()) {
-      return null
+      return null;
     }
     data[index] = s;
     return data[index];
