@@ -76,4 +76,49 @@ public class SuperArray {
     }
     data = fill;
   }
+
+  public boolean contains(String target) {
+    for (int i = 0; i < size; i++) {
+      if this[i].equals(target) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public int indexOf(String target) {
+    for (int i = 0; i < size; i++) {
+      if (this[i].equals(target) {
+        return i;
+      }
+    }
+    return null;
+  }
+
+  public int lastIndexOf(String target) {
+    for (int i = size - 1; i >= 0; i--) {
+      if (this[i].equals(target) {
+        return i;
+      }
+    }
+    return null;
+  }
+
+  public void add(int index, String s) {
+    if (index < 0 || index > size()) {
+      return null;
+    }
+    if (size == data.length){
+      resize();
+    }
+    String[] ary = new String[data.length];
+    for (int i = 0; i < index; i++) {
+      ary[i] = data[i];
+    }
+    ary[index] = s;
+    for (int x = index + 1; x < data.length; x++){
+      ary[x] = data[x-1];
+    }
+    data = ary;
+  }
 }
