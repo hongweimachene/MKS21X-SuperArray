@@ -78,7 +78,7 @@ public class SuperArray {
   }
 
   public boolean contains(String target) {
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < this.size; i++) {
       if this[i].equals(target) {
         return true;
       }
@@ -87,7 +87,7 @@ public class SuperArray {
   }
 
   public int indexOf(String target) {
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < this.size; i++) {
       if (this[i].equals(target) {
         return i;
       }
@@ -96,7 +96,7 @@ public class SuperArray {
   }
 
   public int lastIndexOf(String target) {
-    for (int i = size - 1; i >= 0; i--) {
+    for (int i = this.size - 1; i >= 0; i--) {
       if (this[i].equals(target) {
         return i;
       }
@@ -120,5 +120,30 @@ public class SuperArray {
       ary[x] = data[x-1];
     }
     data = ary;
+    size+=1;
+  }
+
+  public String remove(int index) {
+    if (index < 0 || index > size()) {
+      return null;
+    }
+    String[] ary = new String[data.length];
+    for (int i = 0; i < index; i++) {
+      ary[i] = data[i];
+    }
+    String s = data[index];
+    for (int x = index; x < data.length; x++) {
+      ary[x] = data[x+1];
+    }
+    data = ary;
+    return s;
+  }
+
+  public boolean remove(String target) {
+    if (this.contains(target)) {
+      this.remove(this.indexOf(target));
+      return true;
+    }
+    return false;
   }
 }
