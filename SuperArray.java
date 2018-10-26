@@ -79,7 +79,7 @@ public class SuperArray {
 
   public boolean contains(String target) {
     for (int i = 0; i < this.size; i++) {
-      if this[i].equals(target) {
+      if (this.get(i).equals(target)) {
         return true;
       }
     }
@@ -88,26 +88,23 @@ public class SuperArray {
 
   public int indexOf(String target) {
     for (int i = 0; i < this.size; i++) {
-      if (this[i].equals(target) {
+      if (this.get(i).equals(target)) {
         return i;
       }
     }
-    return null;
+    return -1;
   }
 
   public int lastIndexOf(String target) {
     for (int i = this.size - 1; i >= 0; i--) {
-      if (this[i].equals(target) {
+      if (this.get(i).equals(target)) {
         return i;
       }
     }
-    return null;
+    return -1;
   }
 
   public void add(int index, String s) {
-    if (index < 0 || index > size()) {
-      return null;
-    }
     if (size == data.length){
       resize();
     }
@@ -132,10 +129,11 @@ public class SuperArray {
       ary[i] = data[i];
     }
     String s = data[index];
-    for (int x = index; x < data.length; x++) {
+    for (int x = index; x < data.length-1; x++) {
       ary[x] = data[x+1];
     }
     data = ary;
+    size-=1;
     return s;
   }
 
