@@ -8,9 +8,12 @@ public class SuperArray {
     data = new String[10];
   }
 
-  public SuperArray(int big) {
+  public SuperArray(int startingCapacity) {
     clear();
-    data = new String[big];
+    if (startingCapacity < 1) {
+      resize();
+    }
+    data = new String[startingCapacity];
   }
 
   public void clear() {
@@ -56,14 +59,14 @@ public class SuperArray {
 
   public String get(int index) {
     if (index < 0 || index >= size()) {
-      return null;
+      throw new IndexOutOfBoundsException("Index out of bounds");
     }
     return data[index];
   }
 
   public String set(int index, String s) {
     if (index < 0 || index >= size()) {
-      return null;
+      throw new IndexOutOfBoundsException("Index out of bounds");
     }
     data[index] = s;
     return data[index];
@@ -105,6 +108,9 @@ public class SuperArray {
   }
 
   public void add(int index, String s) {
+    if (index < 0) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
     if (size == data.length){
       resize();
     }
@@ -122,7 +128,7 @@ public class SuperArray {
 
   public String remove(int index) {
     if (index < 0 || index > size()) {
-      return null;
+      throw new IndexOutOfBoundsException("Index out of bounds");
     }
     String[] ary = new String[data.length];
     for (int i = 0; i < index; i++) {
