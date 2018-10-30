@@ -127,7 +127,7 @@ public class SuperArray {
   }
 
   public String remove(int index) {
-    if (index < 0 || index > size()) {
+    if (index < 0 || index >= size()) {
       throw new IndexOutOfBoundsException(index+" is not a valid index");
     }
     String[] ary = new String[data.length];
