@@ -10,7 +10,7 @@ public class SuperArray {
 
   public SuperArray(int startingCapacity) {
     clear();
-    if (startingCapacity < 1) {
+    if (startingCapacity < 0) {
       resize();
     }
     data = new String[startingCapacity];
@@ -24,6 +24,9 @@ public class SuperArray {
     return size;
   }
 
+  public boolean isEmpty() {
+    return size == 0;
+  }
   public boolean add(String s) {
     if (size == data.length){
       resize();
@@ -81,7 +84,7 @@ public class SuperArray {
   }
 
   public boolean contains(String target) {
-    for (int i = 0; i < this.size; i++) {
+    for (int i = 0; i < this.size - 1; i++) {
       if (this.get(i).equals(target)) {
         return true;
       }
@@ -108,7 +111,7 @@ public class SuperArray {
   }
 
   public void add(int index, String s) {
-    if (index < 0) {
+    if (index < 0 || index > size) {
       throw new IndexOutOfBoundsException("Index out of bounds");
     }
     if (size == data.length){
